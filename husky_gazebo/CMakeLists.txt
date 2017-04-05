@@ -10,6 +10,11 @@ catkin_add_env_hooks(50.husky_gazebo
 roslaunch_add_file_check(launch)
 
 install(
+  PROGRAMS scripts/setup_sim_positions scripts/dual_ur5_moveit_demo
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(
   DIRECTORY launch worlds urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
