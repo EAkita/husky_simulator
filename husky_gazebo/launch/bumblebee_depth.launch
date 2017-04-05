@@ -1,0 +1,14 @@
+<launch>
+  <!-- Spawn stereo image proc under bumblebee2 namespace -->
+  <env name="ROS_NAMESPACE" value="bumblebee2"/>
+
+  <node name="bumblebee2_stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc"/>
+  
+  <!-- remap existing topics -->
+  <node name="bumblebee2_left_img_relay" pkg="topic_tools" type="relay" args="/bumblebee2/left/image_raw /left/image_raw"/>
+  <node name="bumblebee2_right_img_relay" pkg="topic_tools" type="relay" args="/bumblebee2/right/image_raw /right/image_raw"/>
+  <node name="bumblebee2_left_info_relay" pkg="topic_tools" type="relay" args="/bumblebee2/left/camera_info /left/camera_info"/>
+  <node name="bumblebee2_right_info_relay" pkg="topic_tools" type="relay" args="/bumblebee2/right/camera_info /right/camera_info"/>
+
+
+</launch>
