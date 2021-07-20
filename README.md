@@ -20,6 +20,7 @@ Create new workspace, clone all the needed packages and build workspace follows:
 
 ```bash
     mkdir -p ~/dual_ws/src
+    cd dual_ws/src
     git clone --recursive https://github.com/EAkita/vaultbot_sim.git
     cd ..
     rosdep install --from-paths src --ignore-src -r -y
@@ -30,13 +31,7 @@ Create new workspace, clone all the needed packages and build workspace follows:
 For simulating the Dual UR5 Husky:
 Make sure your environment variables are set and you re-source your terminal:
 ```bash
-    export DUAL_ARM_BULKHEAD=true
-    export HUSKY_TOP_PLATE_ENABLED=false
-    export DUAL_UR5_ENABLED=true
-    export HUSKY_DUAL_UR5_ENABLED=true
-    export ROBOTIQ_GRIPPERS_ENABLED=true
-    export HUSKY_USER_RAILS=false
-    export FLIR_PTU_ENABLED=true
+    source ./env_vars.sh 
 ```
 
 Launch the simulator for the Dual UR5 Husky flawlessly.
