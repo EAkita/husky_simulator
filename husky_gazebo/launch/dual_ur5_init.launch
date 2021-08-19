@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+Authored by Akita for TeMoto_2 simulation test
+Last Edited on  08/17/2021 -->
+
+<launch>
+  <arg name="dual_ur5_enabled" default="true"/>
+
+  <!-- No args passed. This is taken care of by spawn_husky.launch  -->
+  <!-- Include ros_control configuration for right ur5, only used to initialize right arm-->
+  <!-- Include ros_control configuration for left and right ur5, only used in simulation -->
+  <group if="$(arg dual_ur5_enabled)">
+            <rosparam command="load" file="$(find husky_control)/config/control_left_ur5.yaml" />
+            <rosparam command="load" file="$(find husky_control)/config/control_right_ur5.yaml" />
+            <rosparam command="load" file="$(find husky_control)/config/control_flir_ptu.yaml" />
+            <node name="left_arm_controller_spawner" pkg="controller_manager" type="spawner" args="l_arm_controller --shutdown-timeout 3"/>
+            <node name="right_arm_controller_spawner" pkg="controller_manager" type="spawner" args="r_arm_controller --shutdown-timeout 3"/>
+            <node name="flir_ptu_controller" pkg="controller_manager" type="spawner" args="flir_ptu_controller --shutdown-timeout 3"/>
+  </group>
+
+    <!-- Launch script that stows husky arms -->
+    <node name="position_husky_arms" type="setup_sim_positions" pkg="husky_gazebo"/>
+
+</launch>
+
+          

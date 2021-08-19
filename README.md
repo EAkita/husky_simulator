@@ -42,10 +42,12 @@ Launch the simulator for the Dual UR5 Husky flawlessly.
 To control the arms, bring up the moveit planning execution node with the real:=false flag passed in. 
 
     roslaunch husky_dual_ur5_moveit_config husky_dual_ur5_planning_execution.launch real:=false
+    <!-- roslaunch husky_ur5_moveit_config husky_ur5_planning_execution.launch real:=false -->
 
 To launch RViz so you can control the robot, see through its eyes, see all of its sensor data, and all data about the robot, run the visualization: 
 
     roslaunch husky_dual_ur5_moveit_config moveit_rviz.launch 
+    <!-- roslaunch husky_ur5_moveit_config moveit_rviz.launch  -->
 
 Playing around with the functionality & learning more about the system
 
