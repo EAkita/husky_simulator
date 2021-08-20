@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
 <!--
 Authored by Akita for TeMoto_2 simulation test
-Last Edited on  08/17/2021 -->
+Last Edited on  08/19/2021 -->
 
 <launch>
   <arg name="dual_ur5_enabled" default="true"/>
 
-  <!-- No args passed. This is taken care of by spawn_husky.launch  -->
-  <!-- Include ros_control configuration for right ur5, only used to initialize right arm-->
   <!-- Include ros_control configuration for left and right ur5, only used in simulation -->
   <group if="$(arg dual_ur5_enabled)">
             <rosparam command="load" file="$(find husky_control)/config/control_left_ur5.yaml" />
